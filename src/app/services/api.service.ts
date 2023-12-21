@@ -1,10 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  private getMomentSubject = new Subject<void>();
+
+  getMomentFunctionCalled$ = this.getMomentSubject.asObservable();
+
+  callgetMomentFunction() {
+    this.getMomentSubject.next();
+  }
 
   constructor(private http: HttpClient) { }
   
@@ -23,6 +32,10 @@ export class ApiService {
 
 
   postMoments(body: any) {
-    return this.http.post("http://localhost:3200/api/postMoments",body)
+    return this.http.post("http://localhost:3200/api/postMoments", body)
+  }
+
+  updateMoments(body: any) {
+    return this.http.put("http://localhost:3200/api/updateMoments", body)
   }
 }

@@ -50,4 +50,18 @@ const postMoments = (req, res) => {
 
 }
 
-module.exports ={getMoments,postMoments}
+const updateMoments = (req, res) => {
+  let { moment_id, date, emotion, heading, description } = req.body
+  
+  try {
+    queryAsync("UPDATE  moments SET date = ?,emotion = ?,heading = ?,description = ? where moment_id = ?",
+      [date, emotion, heading, description, moment_id])
+    res.json({message:"update moments"})
+  }
+  catch(error) {
+    console.error("Error fetching moments:", error);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+module.exports ={getMoments,postMoments,updateMoments}

@@ -11,6 +11,8 @@ export class MomentsContainerComponent {
  
 
 
-
+getMoment(){
+  this.momentEmitter.emit(this.moment)
+}
 
 }
