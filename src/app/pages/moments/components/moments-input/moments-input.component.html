@@ -1,0 +1,38 @@
+
+  <div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" style="width: 800px;padding-top: 20px;">
+        <div class="d-flex justify-content-between">
+            <mat-form-field>
+                <mat-label>Date</mat-label>
+                <input matInput type="date"  formControlName="date">
+            </mat-form-field>
+            <mat-form-field >
+                <mat-label>Emotion</mat-label>
+                <mat-select formControlName="emotion">
+                    <mat-option value="happy">Happy</mat-option>
+                    <mat-option value="sad">Sad</mat-option>
+                    <mat-option value="angry">Angry</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="w-75">
+                <input matInput placeholder="Heading" formControlName="heading">
+            </mat-form-field>
+        </div>
+       
+        <div>
+            <mat-form-field class="w-100" style="height: 200px;">
+                <textarea matInput placeholder="Description" formControlName="description"></textarea>
+            </mat-form-field>
+        </div>
+       
+        
+        <div class="d-flex justify-content-center" style="padding-bottom: 20px;">
+            <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary">Submit</button>
+        </div>
+        
+    </form>
+  </div>
+
+  

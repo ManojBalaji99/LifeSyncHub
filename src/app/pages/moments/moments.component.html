@@ -1,0 +1,23 @@
+<app-date-header (getfilterDate)="getFilterDate($event)"></app-date-header>
+<mat-drawer-container [autosize]="true" class="d-flex flex-column min-vh-100  mx-auto ">
+    <mat-drawer mode="side" opened>
+        <div>
+            <mat-form-field>
+                <mat-label>Emotions</mat-label>
+                <mat-select [formControl]="emotions" multiple (selectionChange)="getEmotionStatus($event)">
+            
+                    <mat-option *ngFor="let emotion of emotionsList" [value]="emotion">{{emotion}}</mat-option>
+            
+                </mat-select>
+            </mat-form-field>
+        </div>
+       <div class="d-flex justify-content-center"  >
+        <button mat-icon-button (click)="openDialog()"><mat-icon>insert_invitation</mat-icon></button>
+        </div>
+    </mat-drawer>
+
+    <div *ngFor="let moment of moments">
+        <app-moments-container [moment]="moment"></app-moments-container>
+    </div>
+            
+  </mat-drawer-container>

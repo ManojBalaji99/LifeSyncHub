@@ -1,0 +1,17 @@
+
+<mat-toolbar class="d-flex justify-content-between">
+    <h1 aria-label="See your moments,expense,ToDo-list here">LifeSyncHub</h1>
+    <div>
+        <mat-button-toggle-group>
+            <mat-button-toggle [routerLink]="'/moments'" >
+                Moments
+            </mat-button-toggle>
+            <mat-button-toggle [routerLink]="'/expense'">
+                Expense
+            </mat-button-toggle >
+            <mat-button-toggle [routerLink]="'/todolist'">
+                To-Do List
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</mat-toolbar>
