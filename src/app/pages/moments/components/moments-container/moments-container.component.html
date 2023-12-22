@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-between">
         <mat-card-header>
             <mat-card-title class="text-success">{{moment.heading}}</mat-card-title>
-            <mat-card-subtitle class="p-6">{{moment.date}}</mat-card-subtitle>
+            <mat-card-subtitle class="p-6">{{moment.formatted_date}}</mat-card-subtitle>
         </mat-card-header>
 
         <h3 class="text-success">{{moment.emotion}}</h3>
@@ -12,6 +12,9 @@
             {{moment.description}}
         </mat-card-content>
    
-        <button mat-icon-button (click)="getMoment()" ><mat-icon>editor</mat-icon></button>
+       <div>
+         <button mat-icon-button (click)="getMoment()" ><mat-icon>editor</mat-icon></button>
+         <button mat-icon-button (click)="deleteMoment()" ><mat-icon>delete</mat-icon></button>
+       </div>
     </div>
 </mat-card>

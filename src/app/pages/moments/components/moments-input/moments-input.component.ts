@@ -11,6 +11,7 @@ import { MomentsComponent } from '../../moments.component';
   styleUrls: ['./moments-input.component.css']
 })
 export class MomentsInputComponent implements OnInit {
+  emotionsList = ["Happy","Sad","Bored","Loved","Excitement","Curiosity","Disappoinment"]
   myForm: FormGroup;
 
 
@@ -27,9 +28,8 @@ export class MomentsInputComponent implements OnInit {
 
 ngOnInit(): void {
     if (this.data?.moment_id) {
-      const dateValue = this.parseISOStringToDate(this.data.date);
       this.myForm = this.formBuilder.group({
-        date: [dateValue, Validators.required],
+        date: [this.data.formatted_date, Validators.required],
         emotion: [this.data.emotion, Validators.required],
         heading: [this.data.heading, Validators.required],
         description: [this.data.description, Validators.required]

@@ -9,9 +9,7 @@
             <mat-form-field >
                 <mat-label>Emotion</mat-label>
                 <mat-select formControlName="emotion">
-                    <mat-option value="happy">Happy</mat-option>
-                    <mat-option value="sad">Sad</mat-option>
-                    <mat-option value="angry">Angry</mat-option>
+                    <mat-option *ngFor="let emotion of emotionsList" [value]="emotion">{{emotion}}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>

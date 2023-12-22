@@ -19,9 +19,12 @@ export class ApiService {
   
 
   // moments
-  getMoments(params: any, emo?: any) {
+  getMoments(params?: any, emo?: any) {
     
-    let url = `http://localhost:3200/api/getMoments?${params}`
+    let url = `http://localhost:3200/api/getMoments`
+    if (params) {
+      url+= `?${params}`
+    }
     if (emo) {
       url += `&selectedEmotions=${emo}`
     }
@@ -37,5 +40,10 @@ export class ApiService {
 
   updateMoments(body: any) {
     return this.http.put("http://localhost:3200/api/updateMoments", body)
+  }
+
+  deleteMoments(body:any){
+    console.log(body)
+    return this.http.put("http://localhost:3200/api/deleteMoments",body)
   }
 }

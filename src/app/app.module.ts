@@ -13,7 +13,7 @@ import { MomentsComponent } from './pages/moments/moments.component';
 import { ExpenseComponent } from './pages/expense/expense.component';
 import { TodoListComponent } from './pages/todo-list/todo-list.component';
 import { DateHeaderComponent } from './pages/date-header/date-header.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -83,7 +83,8 @@ import { MomentsContainerComponent } from './pages/moments/components/moments-co
     MatSelectModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

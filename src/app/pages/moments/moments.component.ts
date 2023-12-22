@@ -14,7 +14,7 @@ export class MomentsComponent implements OnInit{
   emotions = new FormControl()
   selectedEmotions: string[] = [];
   moments: any;
-  filteredDate: any = {year : 2023}
+  filteredDate: any;
   editableMoment: any;
   emotionsList = ["Happy","Sad","Bored","Loved","Excitement","Curiosity","Disappoinment"]
   private subscription: Subscription
@@ -29,8 +29,8 @@ export class MomentsComponent implements OnInit{
 
 
 ngOnInit(): void {
-  let paramsOnInit = this.constructQueryString(this.filteredDate)
-  this.apiService.getMoments(paramsOnInit).subscribe((data) => {
+
+  this.apiService.getMoments().subscribe((data) => {
     this.moments = data
   })
 }
@@ -84,19 +84,32 @@ ngOnInit(): void {
     console.log(moment) 
     this.openDialogEdit(moment)
   }
-    getMomentsAfterEdit() {
+  getMomentsAfterEdit() {
+    if (this.filteredDate) {
       let params = this.constructQueryString(this.filteredDate)
-       if (this.selectedEmotions.length > 0) {
-      this.apiService.getMoments(params, this.selectedEmotions).subscribe((data) => {
+      if (this.selectedEmotions.length > 0) {
+        this.apiService.getMoments(params, this.selectedEmotions).subscribe((data) => {
+          this.moments = data
+          console.log(data)
+        })
+      }
+
+      this.apiService.getMoments(params).subscribe((data) => {
         this.moments = data
         console.log(data)
       })
     }
-
-    this.apiService.getMoments(params).subscribe((data) => {
+    else {
+      this.apiService.getMoments().subscribe((data) => {
         this.moments = data
-        console.log(data)
       })
+    }
+  }
+  
+  showAllMoments() {
+    this.apiService.getMoments().subscribe((data) => {
+      this.moments= data
+    })
   }
 
 }
