@@ -82,4 +82,42 @@ const deleteMoments = async (req,res) => {
   }
 }
 
-module.exports ={getMoments,postMoments,updateMoments,deleteMoments}
+// to do list
+
+const gettodolist = async (req, res) => {
+  try {
+    let list = await queryAsync("Select * from todo_list")
+    res.json(list)
+  }
+    catch(error) {
+    console.error("Error fetching list:", error);
+    res.status(500).send("Internal Server Error");
+  }
+}
+
+const updatetodolist = async (req, res)=>{
+
+  let {todo,completed_on} = req.body
+  try {
+    await queryAsync("Update todo_list Set completed_on = ?, status = ? where todo = ?", [completed_on, "complete", todo])
+    res.json({message: "Update todo"})
+  }
+    catch(error) {
+    console.error("Error update list:", error);
+    res.status(500).send("Internal Server Error");
+  }
+
+}
+
+const deleteToDo = async (req, res) => {
+  let { id } = req.body;
+  try {
+    await queryAsync("Delete from todo_list where id = ?", [id]);
+    res.json({message: "Deleted todo  successfully"})
+  }
+  catch {
+    
+  }
+}
+
+module.exports ={getMoments,postMoments,updateMoments,deleteMoments,gettodolist,updatetodolist,deleteToDo}

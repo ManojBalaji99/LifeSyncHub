@@ -40,6 +40,11 @@ import { YearpickerComponent } from './pages/date-header/components/yearpicker/y
 import { MonthpickerComponent } from './pages/date-header/components/monthpicker/monthpicker.component';
 import { MomentsInputComponent } from './pages/moments/components/moments-input/moments-input.component';
 import { MomentsContainerComponent } from './pages/moments/components/moments-container/moments-container.component';
+import { TodoContainerComponent } from './pages/todo-list/components/todo-container/todo-container.component';
+import { TodoFilterComponent } from './pages/todo-list/components/todo-filter/todo-filter.component';
+import { TodoInputComponent } from './pages/todo-list/components/todo-input/todo-input.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 
 @NgModule({
@@ -53,7 +58,10 @@ import { MomentsContainerComponent } from './pages/moments/components/moments-co
     YearpickerComponent,
     MonthpickerComponent,
     MomentsInputComponent,
-    MomentsContainerComponent
+    MomentsContainerComponent,
+    TodoContainerComponent,
+    TodoFilterComponent,
+    TodoInputComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +92,8 @@ import { MomentsContainerComponent } from './pages/moments/components/moments-co
     MatNativeDateModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

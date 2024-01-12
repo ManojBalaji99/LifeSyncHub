@@ -9,11 +9,20 @@ export class ApiService {
 
   private getMomentSubject = new Subject<void>();
 
+  private getToDoListSubject = new Subject<void>();
+
   getMomentFunctionCalled$ = this.getMomentSubject.asObservable();
+
+  getToDoListFunctionCalled$ = this.getToDoListSubject.asObservable();
 
   callgetMomentFunction() {
     this.getMomentSubject.next();
   }
+
+  callgetTodolistFunction() {
+    this.getToDoListSubject.next();
+  }
+
 
   constructor(private http: HttpClient) { }
   
@@ -46,4 +55,23 @@ export class ApiService {
     console.log(body)
     return this.http.put("http://localhost:3200/api/deleteMoments",body)
   }
+
+  getTodolist() {
+    let url = "http://localhost:3200/api/getTodolist";
+    return this.http.get(url);
+  }
+
+  updateToDoListStatus(body : any) {
+   
+    let url = "http://localhost:3200/api/updateToDoListStatus"
+    return this.http.put(url,body)
+  }
+
+  deleteToDo(body : any) {
+    
+    let url = "http://localhost:3200/api/deleteToDo"
+    return this.http.put(url,body)
+  }
+
+
 }

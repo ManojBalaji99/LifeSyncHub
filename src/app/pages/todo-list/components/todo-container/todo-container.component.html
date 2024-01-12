@@ -1,0 +1,30 @@
+<mat-card *ngIf="todo"
+    [ngStyle]="(todo.status === 'incomplete') ? { 'background-color': 'yellow' } : { 'background-color': 'green' }" class="border border-primary">
+    <div class="d-flex justify-content-between">
+        <mat-card-header>
+            <mat-card-title>{{todo.todo}}</mat-card-title>
+            <mat-card-subtitle style="font-size: larger; color: rgb(63, 6, 88); padding-top: 10px;">Priority:
+                {{todo.Priority}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <div>
+            <mat-slide-toggle *ngIf="todo.status !== 'complete'" style="padding-top: 17px;" [(ngModel)]="toggleChecked"
+                (change)="onToggleChange($event)">
+                <p style="color: black;">Toggle to completed</p>
+            </mat-slide-toggle>
+        </div>
+
+       
+            
+    </div>
+
+    <mat-card-content style="padding-top: 15px;">
+        <div class="d-flex justify-content-between">
+            <p>Created on {{todo.CreationDate}}</p>
+            <p *ngIf="todo.status === 'incomplete'">Complete by {{todo.Complete_by}}</p>
+            <p *ngIf="todo.status === 'completed'">Completed on {{todo.completed_on}}</p>
+        </div>
+    </mat-card-content>
+
+    <div class="d-flex justify-content-end"><button mat-button color="black" (click)="deleteToDo()"><mat-icon>delete</mat-icon></button></div>
+</mat-card>
