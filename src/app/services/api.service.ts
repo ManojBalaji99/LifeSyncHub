@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable({
@@ -56,9 +57,23 @@ export class ApiService {
     return this.http.put("http://localhost:3200/api/deleteMoments",body)
   }
 
-  getTodolist() {
-    let url = "http://localhost:3200/api/getTodolist";
-    return this.http.get(url);
+  getTodolist(list?: string, date?: string): Observable<any> {
+    let url = 'http://localhost:3200/api/getTodolist';
+    let params = new HttpParams();
+
+    if (list && !date) {
+      params = params.set('status', list);
+    }
+
+    if (date && !list) {
+      params = params.set('complete_by', date);
+    }
+
+    if (date && list) {
+      params = params.set('status', list).set('complete_by', date);
+    }
+    console.log(url,{params : params})
+    return this.http.get(url, { params: params });
   }
 
   updateToDoListStatus(body : any) {

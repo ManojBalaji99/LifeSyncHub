@@ -85,11 +85,23 @@ const deleteMoments = async (req,res) => {
 // to do list
 
 const gettodolist = async (req, res) => {
-  try {
-    let list = await queryAsync("Select * from todo_list")
-    res.json(list)
-  }
-    catch(error) {
+try {
+    const { list, date } = req.query; 
+
+    let sql = "SELECT * FROM todo_list";
+
+    
+    if (list && !date) {
+      sql += ` WHERE status = '${list}'`;
+    } else if (date && !list) {
+      sql += ` WHERE complete_by = '${date}'`;
+    } else if (date && list) {
+      sql += ` WHERE status = '${list}' AND complete_by = '${date}'`;
+    }
+
+    const result = await queryAsync(sql); 
+    res.json(result); 
+  } catch (error) {
     console.error("Error fetching list:", error);
     res.status(500).send("Internal Server Error");
   }

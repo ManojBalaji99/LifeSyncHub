@@ -1,1 +1,23 @@
-<p>todo-filter works!</p>
+<mat-toolbar color="primary">
+    <div class="container-fluid" style="padding-top: 20px;">
+        <div class="row">
+            <div class="col">
+                <mat-button-toggle-group [(ngModel)]="selectedList" (change)="getSelectedList()" multiple="false">
+                    <mat-button-toggle value="All">All</mat-button-toggle>
+                    <mat-button-toggle value="complete">Complete</mat-button-toggle>
+                    <mat-button-toggle value="incomplete">Incomplete</mat-button-toggle>
+                </mat-button-toggle-group>
+            </div>
+            <div class="col-auto">
+            <mat-form-field class="custom-form-field">
+                <input matInput [matDatepicker]="picker" placeholder="{{ placeholderText }}" [ngModel]="date"
+                    (ngModelChange)="onDateChange($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+   
+</mat-toolbar>

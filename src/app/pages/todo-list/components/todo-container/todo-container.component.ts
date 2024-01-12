@@ -23,6 +23,7 @@ export class TodoContainerComponent {
       console.log(body)
       this.apiService.updateToDoListStatus(body).subscribe((data) => {
         if (data) {
+          console.log("Called by ToggleChange")
           this.apiService.callgetTodolistFunction()
         }
       })
@@ -35,6 +36,7 @@ export class TodoContainerComponent {
     let body = { id: this.todo.id }
     this.apiService.deleteToDo(body).subscribe((data) => {
       if (data) {
+        console.log("Called by deleteList")
         this.apiService.callgetTodolistFunction();
       }
     })
