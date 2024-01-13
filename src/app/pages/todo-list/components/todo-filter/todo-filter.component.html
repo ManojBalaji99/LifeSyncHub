@@ -2,7 +2,7 @@
     <div class="container-fluid" style="padding-top: 20px;">
         <div class="row">
             <div class="col">
-                <mat-button-toggle-group [(ngModel)]="selectedList" (change)="getSelectedList()" multiple="false">
+                <mat-button-toggle-group [(ngModel)]="selectedList" (change)="getSelectedStatus()" multiple="false">
                     <mat-button-toggle value="All">All</mat-button-toggle>
                     <mat-button-toggle value="complete">Complete</mat-button-toggle>
                     <mat-button-toggle value="incomplete">Incomplete</mat-button-toggle>

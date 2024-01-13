@@ -1,5 +1,8 @@
 
-<app-todo-filter></app-todo-filter>
+<app-todo-filter (selectedStatus)="getSelectedStatus($event)"
+    (selectedDate)="getSelectedDate($event)"></app-todo-filter>
+
+
 <div *ngFor="let todo of todolist">
 <app-todo-container [todo] = "todo"></app-todo-container>
 </div>
